@@ -1,4 +1,4 @@
-reated on 2015-12-19
+created on 2015-12-19
 模拟登录南邮邮箱
 @author: wuzhidong
 '''
