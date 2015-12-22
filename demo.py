@@ -1,54 +1,54 @@
+# -*- coding:UTF-8 -*-
 '''
-
 created on 2015-12-19
-模拟登录南邮邮箱
+妯℃嫙鐧诲綍鍗楅偖閭
 @author: wuzhidong
 '''
 import urllib2
 import urllib
 
 
-#模拟登录南邮邮箱
+#妯℃嫙鐧诲綍鍗楅偖閭
 def loginNUPTMailBox(uid, password):
-    #登录页的URL
+    #鐧诲綍椤电殑URL
     url = 'http://mail.njupt.edu.cn/coremail/index.jsp'
     
-    #浏览器标识符
+    #娴忚鍣ㄦ爣璇嗙
     agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36'
     
-    #构造的HTTP请求的头部
+    #鏋勯�犵殑HTTP璇锋眰鐨勫ご閮�
     headers = {}
     headers['User-Agent'] = agent
     
-    #构造的请求的内容
+    #鏋勯�犵殑璇锋眰鐨勫唴瀹�
     values = {}
     values['action:login'] = ''
     values['uid'] = uid
     values['password'] = password
     
-    #请求内容编码
+    #璇锋眰鍐呭缂栫爜
     data = urllib.urlencode(values)
     
-    #构造请求
+    #鏋勯�犺姹�
     request = urllib2.Request(url, data, headers)
     
-    #将请求作为参数传入urlopen方法，得到返回的内容
+    #灏嗚姹備綔涓哄弬鏁颁紶鍏rlopen鏂规硶锛屽緱鍒拌繑鍥炵殑鍐呭
     response = urllib2.urlopen(request)
     
-    #打开文件（如果没有就新建），设置只写
+    #鎵撳紑鏂囦欢锛堝鏋滄病鏈夊氨鏂板缓锛夛紝璁剧疆鍙啓
     file = open('NUPTMailBox.html', 'r+w')
     
-    #把response的内容写进文件
+    #鎶妑esponse鐨勫唴瀹瑰啓杩涙枃浠�
     file.write(response.read())
     
-    #关闭文件
+    #鍏抽棴鏂囦欢
     file.close()
     
-    #打开文件，设置只读
+    #鎵撳紑鏂囦欢锛岃缃彧璇�
     file = open('NUPTMailBox.html', 'r')
     
-    #把文件里的内容打印出来
+    #鎶婃枃浠堕噷鐨勫唴瀹规墦鍗板嚭鏉�
     print file.read()
     
-    #关闭文件
+    #鍏抽棴鏂囦欢
     file.close()
